@@ -1,0 +1,32 @@
+{
+  "name": "chamber",
+  "description": "chamber app description",
+  "author": {
+    "name": "Victor Lawrence",
+    "email": "VictorLawrenceCode@gmail.com"
+  },
+  "version": "0.0.1",
+  "license": "MIT",
+  "main": "main.js",
+  "scripts": {
+    "dist": "node build.js",
+    "start": "node ignite.js",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "concurrently": "^5.0.0",
+    "electron": "^6.0.12",
+    "electron-builder": "^21.2.0",
+    "electron-reload": "^1.5.0",
+    "parcel-bundler": "^1.12.4",
+    "electron-is-dev": "^1.1.0"
+  },
+  "dependencies": {
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "styled-components": "^4.4.0"
+  }
+}
