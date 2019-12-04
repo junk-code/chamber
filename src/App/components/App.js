@@ -17,7 +17,7 @@ const StylishWelcome = styled.div`
 export const App = () => {
   return (
     <div>
-      <StylishWelcome>
+      <StylishWelcome onClick={() => { console.log('Clicked!') }}>
         Howdy from a React App Chamber!
       </StylishWelcome>
     </div>

@@ -10,7 +10,8 @@
   "main": "main.js",
   "scripts": {
     "dist": "node build.js",
-    "start": "node ignite.js",
+    "start": "node ignite-standard.js",
+    "ignite-debug": "node ignite-debug.js",
     "postinstall": "electron-builder install-app-deps"
   },
   "devDependencies": {
@@ -20,9 +21,9 @@
     "concurrently": "^5.0.0",
     "electron": "^6.0.12",
     "electron-builder": "^21.2.0",
+    "electron-is-dev": "^1.1.0",
     "electron-reload": "^1.5.0",
-    "parcel-bundler": "^1.12.4",
-    "electron-is-dev": "^1.1.0"
+    "parcel-bundler": "^1.12.4"
   },
   "dependencies": {
     "react": "^16.10.2",

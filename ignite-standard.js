@@ -24,7 +24,7 @@ bundler.serve(devPort).then(server => {
   const portRegex = /\d+$/g
   const portString = portRegex.exec(server._connectionKey)[0]
   if (portString.length > 0) {
-    concurrently([`${portKey}=${portString} && electron .`]).then(() => {
+    concurrently([`${portKey}=${portString} && electron . --remote-debugging-port=9223`]).then(() => {
       server.close()
       process.exit(0)
     }).catch(error => {
