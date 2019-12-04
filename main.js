@@ -3,6 +3,7 @@ const { app, BrowserWindow } = electron
 const path = require('path')
 const isDev = require('electron-is-dev')
 const { devPort } = require('./common/settings.js')
+const { getPortKey } = require('./utilities/getPortKey.js')
 
 let mainWindow = null
 
@@ -17,11 +18,14 @@ const webPreferences = {
 const createWindow = () => {
   mainWindow = new BrowserWindow({ width, height, webPreferences })
   mainWindow.on('closed', () => { mainWindow = null })
-  mainWindow.loadURL(
-    isDev
-      ? `http://localhost:${devPort}`
-      : `file://${path.join(__dirname, '../build/index.html')}`
-  )
+  if (isDev) {
+    const portKey = getPortKey()
+    const portValue = process.env[portKey]
+    const port = portValue || devPort
+    mainWindow.loadURL(`http://localhost:${port}`)
+  } else {
+    mainWindow.loadURL(`file://${path.join(__dirname, '../build/index.html')}`)
+  }
 }
 
 app.on('ready', createWindow)
