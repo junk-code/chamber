@@ -1,12 +1,14 @@
 const Bundler = require('parcel-bundler')
-const concurrently = require('concurrently')
 const path = require('path')
+const electronPath = require('electron')
 
 const { getPortKey } = require('./utilities/getPortKey.js')
 
 const { devPort } = require('./common/settings.js')
 
-const entryFile = path.join(__dirname, `./src/index.html`)
+const entryFile = path.join(__dirname, './src/index.html')
+
+const { spawn } = require('child_process')
 
 const options = {
   port: devPort,
@@ -24,11 +26,26 @@ bundler.serve(devPort).then(server => {
   const portRegex = /\d+$/g
   const portString = portRegex.exec(server._connectionKey)[0]
   if (portString.length > 0) {
-    concurrently([`${portKey}=${portString} && electron . --remote-debugging-port=9223`]).then(() => {
+    const instance = spawn(electronPath, [
+      'main.js',
+      '--remoteDebuggingPort=9223'
+    ],
+    {
+      detached: true,
+      cwd: __dirname,
+      env: {
+        ...process.env,
+        [portKey]: portString
+      }
+    })
+
+    instance.on('disconnect', () => {
+      console.log('DISCONNECT')
+    })
+
+    instance.on('exit', () => {
       server.close()
       process.exit(0)
-    }).catch(error => {
-      console.error(error)
     })
   }
 })

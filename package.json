@@ -18,7 +18,6 @@
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
-    "concurrently": "^5.0.0",
     "electron": "^6.0.12",
     "electron-builder": "^21.2.0",
     "electron-is-dev": "^1.1.0",
