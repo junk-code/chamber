@@ -1,25 +1,21 @@
 import React from 'react'
-
-import styled from 'styled-components'
-
-const StylishWelcome = styled.div`
-  padding: 1rem;
-  color: white;
-  background: red;
-  border: 1rem dashed white;
-  text-align: center;
-  height: 100vh;
-  display:flex;
-  align-items: center;
-  justify-content: center;
-`
+import { Text } from 'react-pixi-fiber'
+import { ResponsiveStage } from './ResponsiveStage'
 
 export const App = () => {
   return (
-    <div>
-      <StylishWelcome onClick={() => { console.log('Clicked!') }}>
-        Howdy from a React App Chamber!
-      </StylishWelcome>
-    </div>
+    <ResponsiveStage>
+      <Text
+        text = "This is a Test 1234 from App.jsx!"
+        x={20}
+        y={20}
+        style={
+          {
+            fill:0xff0000,
+            fontFamily:'monospace'
+          }
+        }
+      />
+    </ResponsiveStage>
   )
 }
