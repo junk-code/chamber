@@ -10,7 +10,8 @@ export const App = () => {
         x={20}
         y={20}
         style={{
-          fill: 0xff0000,
+          fill: 0xffff00,
+          fontFamily: 'monospace',
           fontSize: 30
         }}
       />
