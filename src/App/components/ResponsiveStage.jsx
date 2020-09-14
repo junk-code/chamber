@@ -29,10 +29,10 @@ const MagicElement = ({ app, children }) => {
   return <>{children}</>
 }
 
-const InternalStage = ({ children }) => {
+const InternalStage = ({ children, ...rest }) => {
   return (
     <>
-      <StylishStage>
+      <StylishStage {...rest}>
         <AppContext.Consumer>
           {app => {
             return (
